@@ -1,0 +1,113 @@
+[[FLINT]]
+arch = "i686"
+git-tree-sha1 = "fb51738373c9fcb91d112c3d9ab89845bd82fa60"
+libc = "musl"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "9504a94062e5836c47c5cb731e8c967b917230e50f99e8b82bbfd9ca87b7d878"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.i686-linux-musl.tar.gz"
+[[FLINT]]
+arch = "aarch64"
+git-tree-sha1 = "43ecb0aa17adc9c0e521250f6d190e4b0855c056"
+libc = "musl"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "2095b17382f4f6e93cc9c6682ce1bca2b5446e40ef3befcc8a39b58fbe021cf7"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.aarch64-linux-musl.tar.gz"
+[[FLINT]]
+arch = "i686"
+git-tree-sha1 = "9fb1eaeaf7569d596711eca05427759d2834334b"
+os = "windows"
+
+    [[FLINT.download]]
+    sha256 = "c0a5fc39425467da297ccab4c10c7f4065cf06f2b846b033ebbc455dfa2efdc0"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.i686-w64-mingw32.tar.gz"
+[[FLINT]]
+arch = "x86_64"
+git-tree-sha1 = "5f8ce636b18e3dee8a98222858f7be03a08bd1d4"
+os = "windows"
+
+    [[FLINT.download]]
+    sha256 = "02c0a3bc08e00d3ad59a00173407b62fe91c1269e5903f8b7365f856ec233f82"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.x86_64-w64-mingw32.tar.gz"
+[[FLINT]]
+arch = "armv7l"
+git-tree-sha1 = "0d085a95630fdab68e9daa7b5af8f055043e7617"
+libc = "glibc"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "8a90c173a644001f781d4045e02cc3683c28ea7503c380d4500636827afe4b6b"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.armv7l-linux-gnueabihf.tar.gz"
+[[FLINT]]
+arch = "armv7l"
+git-tree-sha1 = "e98e1002fa213b91e4ac2513ec9117e7e30cb6a4"
+libc = "musl"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "75a5b34ba2362f4b480218090cc0d1c955bf339ee036cf7e318b1c0e463b4f3b"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.armv7l-linux-musleabihf.tar.gz"
+[[FLINT]]
+arch = "i686"
+git-tree-sha1 = "c85596f15155a40a3419451a627fad38b1046c43"
+libc = "glibc"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "efda0718eac26e25a6a91f7407836779d1ce7de3518e5f8ca4e940eecc1f7cba"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.i686-linux-gnu.tar.gz"
+[[FLINT]]
+arch = "x86_64"
+git-tree-sha1 = "6683b5e25e45d1a89c93e6f7a474df82132fe417"
+libc = "glibc"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "68319251b42c7fc306ca92a6c9c9c5883bdbf41833c388c214f3f3672cb03ad0"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.x86_64-linux-gnu.tar.gz"
+[[FLINT]]
+arch = "powerpc64le"
+git-tree-sha1 = "d83b5567a792fd7b70fe06ac1d92048676011a01"
+libc = "glibc"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "3c8aaa11fbd591b21fe2defb4b0429fb025e375990c71dbd09cf1f496353dfd8"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.powerpc64le-linux-gnu.tar.gz"
+[[FLINT]]
+arch = "x86_64"
+git-tree-sha1 = "6b1cb4580cd29b5a035e7f62c24378677b810250"
+os = "macos"
+
+    [[FLINT.download]]
+    sha256 = "24ac5e8e9891426c221bca1009fb99b8799a4c1c0a037d8b54fdbb09000e0813"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.x86_64-apple-darwin14.tar.gz"
+[[FLINT]]
+arch = "aarch64"
+git-tree-sha1 = "c77b6b64403f85918c67e3f7e87d3e39a4e7df7d"
+libc = "glibc"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "ec9887a7f7fa75cd40cbf9816d4aa85c14682be8c122f2767dd33d6e3485c57d"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.aarch64-linux-gnu.tar.gz"
+[[FLINT]]
+arch = "x86_64"
+git-tree-sha1 = "3a97b4f64418096235046a5f9e78c5ab78e79e17"
+os = "freebsd"
+
+    [[FLINT.download]]
+    sha256 = "b7c82997dbb802eb5fc5b0aaad6ca5ce61306af821141c3b47a4f65da1818ff0"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.x86_64-unknown-freebsd11.1.tar.gz"
+[[FLINT]]
+arch = "x86_64"
+git-tree-sha1 = "309312b6616ac9492b0c020aac938169abb44772"
+libc = "musl"
+os = "linux"
+
+    [[FLINT.download]]
+    sha256 = "9ca6dd40dbff5d7b43ddad0206e27c6e4c5570cd87d1248911c63d9a0ce17e60"
+    url = "https://github.com/JuliaBinaryWrappers/FLINT_jll.jl/releases/download/FLINT-v0.0.1+0/FLINT.v0.0.1.x86_64-linux-musl.tar.gz"
