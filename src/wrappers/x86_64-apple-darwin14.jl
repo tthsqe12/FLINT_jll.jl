@@ -7,6 +7,7 @@ using MPFR_jll
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "DYLD_FALLBACK_LIBRARY_PATH"
+LIBPATH_default = "~/lib:/usr/local/lib:/lib:/usr/lib"
 
 # Relative path to `libflint`
 const libflint_splitpath = ["lib", "libflint.dylib"]
@@ -19,7 +20,7 @@ libflint_path = ""
 libflint_handle = C_NULL
 
 # This must be `const` so that we can use it with `ccall()`
-const libflint = "@rpath/libflint-13.dylib"
+const libflint = "@rpath/libflint-14.dylib"
 
 
 """

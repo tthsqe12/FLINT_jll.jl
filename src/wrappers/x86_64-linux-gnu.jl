@@ -7,6 +7,7 @@ using MPFR_jll
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "LD_LIBRARY_PATH"
+LIBPATH_default = ""
 
 # Relative path to `libflint`
 const libflint_splitpath = ["lib", "libflint.so"]
@@ -19,7 +20,7 @@ libflint_path = ""
 libflint_handle = C_NULL
 
 # This must be `const` so that we can use it with `ccall()`
-const libflint = "libflint.so.13"
+const libflint = "libflint.so.14"
 
 
 """

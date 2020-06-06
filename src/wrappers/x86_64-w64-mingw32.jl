@@ -7,9 +7,10 @@ using MPFR_jll
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "PATH"
+LIBPATH_default = ""
 
 # Relative path to `libflint`
-const libflint_splitpath = ["bin", "libflint-13.dll"]
+const libflint_splitpath = ["bin", "libflint-14.dll"]
 
 # This will be filled out by __init__() for all products, as it must be done at runtime
 libflint_path = ""
@@ -19,7 +20,7 @@ libflint_path = ""
 libflint_handle = C_NULL
 
 # This must be `const` so that we can use it with `ccall()`
-const libflint = "libflint-13.dll"
+const libflint = "libflint-14.dll"
 
 
 """
