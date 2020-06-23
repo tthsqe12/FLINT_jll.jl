@@ -10,7 +10,7 @@ LIBPATH_env = "PATH"
 LIBPATH_default = ""
 
 # Relative path to `libflint`
-const libflint_splitpath = ["bin", "libflint-14.dll"]
+const libflint_splitpath = ["bin", "libflint-13.dll"]
 
 # This will be filled out by __init__() for all products, as it must be done at runtime
 libflint_path = ""
@@ -20,7 +20,7 @@ libflint_path = ""
 libflint_handle = C_NULL
 
 # This must be `const` so that we can use it with `ccall()`
-const libflint = "libflint-14.dll"
+const libflint = "libflint-13.dll"
 
 
 """
@@ -31,13 +31,13 @@ function __init__()
 
     # Initialize PATH and LIBPATH environment variable listings
     global PATH_list, LIBPATH_list
-    # We first need to add to LIBPATH_list the libraries provided by Julia
-    append!(LIBPATH_list, [Sys.BINDIR, joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)])
     # From the list of our dependencies, generate a tuple of all the PATH and LIBPATH lists,
     # then append them to our own.
     foreach(p -> append!(PATH_list, p), (GMP_jll.PATH_list, MPFR_jll.PATH_list,))
     foreach(p -> append!(LIBPATH_list, p), (GMP_jll.LIBPATH_list, MPFR_jll.LIBPATH_list,))
 
+    # Lastly, we need to add to LIBPATH_list the libraries provided by Julia
+    append!(LIBPATH_list, [Sys.BINDIR, joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)])
     global libflint_path = normpath(joinpath(artifact_dir, libflint_splitpath...))
 
     # Manually `dlopen()` this right now so that future invocations
