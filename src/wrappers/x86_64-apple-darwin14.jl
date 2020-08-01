@@ -20,7 +20,7 @@ libflint_path = ""
 libflint_handle = C_NULL
 
 # This must be `const` so that we can use it with `ccall()`
-const libflint = "@rpath/libflint-13.dylib"
+const libflint = "@rpath/libflint-14.dylib"
 
 
 """
@@ -36,8 +36,6 @@ function __init__()
     foreach(p -> append!(PATH_list, p), (GMP_jll.PATH_list, MPFR_jll.PATH_list,))
     foreach(p -> append!(LIBPATH_list, p), (GMP_jll.LIBPATH_list, MPFR_jll.LIBPATH_list,))
 
-    # Lastly, we need to add to LIBPATH_list the libraries provided by Julia
-    append!(LIBPATH_list, [joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)])
     global libflint_path = normpath(joinpath(artifact_dir, libflint_splitpath...))
 
     # Manually `dlopen()` this right now so that future invocations
@@ -49,12 +47,18 @@ function __init__()
     filter!(!isempty, unique!(PATH_list))
     filter!(!isempty, unique!(LIBPATH_list))
     global PATH = join(PATH_list, ':')
-    global LIBPATH = join(LIBPATH_list, ':')
+    global LIBPATH = join(vcat(LIBPATH_list, [joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)]), ':')
 
-    # Add each element of LIBPATH to our DL_LOAD_PATH (necessary on platforms
-    # that don't honor our "already opened" trick)
-    #for lp in LIBPATH_list
-    #    push!(DL_LOAD_PATH, lp)
-    #end
+      if !Sys.iswindows() && !(get(ENV, "NEMO_THREADED", "") == "1")
+    #to match the global gmp ones
+    fm = dlsym(libflint_handle, :__flint_set_memory_functions)
+    ccall(fm, Nothing,
+      (Ptr{Nothing},Ptr{Nothing},Ptr{Nothing},Ptr{Nothing}),
+        cglobal(:jl_malloc),
+        cglobal(:jl_calloc),
+        cglobal(:jl_realloc),
+        cglobal(:jl_free))
+  end
+
 end  # __init__()
 
