@@ -3,52 +3,17 @@ export libflint
 
 using GMP_jll
 using MPFR_jll
-## Global variables
-PATH = ""
-LIBPATH = ""
-LIBPATH_env = "PATH"
-LIBPATH_default = ""
-
-# Relative path to `libflint`
-const libflint_splitpath = ["bin", "libflint-14.dll"]
-
-# This will be filled out by __init__() for all products, as it must be done at runtime
-libflint_path = ""
-
-# libflint-specific global declaration
-# This will be filled out by __init__()
-libflint_handle = C_NULL
-
-# This must be `const` so that we can use it with `ccall()`
-const libflint = "libflint-14.dll"
-
-
-"""
-Open all libraries
-"""
+JLLWrappers.@generate_wrapper_header("FLINT")
+JLLWrappers.@declare_library_product(libflint, "libflint-14.dll")
 function __init__()
-    global artifact_dir = abspath(artifact"FLINT")
+    JLLWrappers.@generate_init_header(GMP_jll, MPFR_jll)
+    JLLWrappers.@init_library_product(
+        libflint,
+        "bin\\libflint-14.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
 
-    # Initialize PATH and LIBPATH environment variable listings
-    global PATH_list, LIBPATH_list
-    # From the list of our dependencies, generate a tuple of all the PATH and LIBPATH lists,
-    # then append them to our own.
-    foreach(p -> append!(PATH_list, p), (GMP_jll.PATH_list, MPFR_jll.PATH_list,))
-    foreach(p -> append!(LIBPATH_list, p), (GMP_jll.LIBPATH_list, MPFR_jll.LIBPATH_list,))
-
-    global libflint_path = normpath(joinpath(artifact_dir, libflint_splitpath...))
-
-    # Manually `dlopen()` this right now so that future invocations
-    # of `ccall` with its `SONAME` will find this path immediately.
-    global libflint_handle = dlopen(libflint_path)
-    push!(LIBPATH_list, dirname(libflint_path))
-
-    # Filter out duplicate and empty entries in our PATH and LIBPATH entries
-    filter!(!isempty, unique!(PATH_list))
-    filter!(!isempty, unique!(LIBPATH_list))
-    global PATH = join(PATH_list, ';')
-    global LIBPATH = join(vcat(LIBPATH_list, [Sys.BINDIR, joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)]), ';')
-
+    JLLWrappers.@generate_init_footer()
       if !Sys.iswindows() && !(get(ENV, "NEMO_THREADED", "") == "1")
     #to match the global gmp ones
     fm = dlsym(libflint_handle, :__flint_set_memory_functions)
@@ -61,4 +26,3 @@ function __init__()
   end
 
 end  # __init__()
-
