@@ -4,12 +4,12 @@ export libflint
 using GMP_jll
 using MPFR_jll
 JLLWrappers.@generate_wrapper_header("FLINT")
-JLLWrappers.@declare_library_product(libflint, "libflint-15.dll")
+JLLWrappers.@declare_library_product(libflint, "libflint-16.dll")
 function __init__()
     JLLWrappers.@generate_init_header(GMP_jll, MPFR_jll)
     JLLWrappers.@init_library_product(
         libflint,
-        "bin\\libflint-15.dll",
+        "bin\\libflint-16.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
